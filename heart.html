@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I love you, nini</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="heart"></canvas>
+
+<script>
+const canvas = document.getElementById("heart");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+ctx.fillStyle = "#f1788a";
+ctx.font = "bold 8px Arial";
+
+for (let scale = 11; scale < 17; scale++) {
+
+    for (let i = 0; i < 120; i++) {
+
+        let angle = i * (Math.PI * 2) / 120;
+
+        let x = 16 * Math.pow(Math.sin(angle), 3) * scale;
+
+        let y = (
+            13 * Math.cos(angle)
+            - 5 * Math.cos(2 * angle)
+            - 2 * Math.cos(3 * angle)
+            - Math.cos(4 * angle)
+        ) * scale;
+
+        let screenX = canvas.width / 2 + x;
+        let screenY = canvas.height / 2 - y;
+
+        ctx.fillText("I love you, nini", screenX, screenY);
+    }
+}
+</script>
+
+</body>
+</html>
